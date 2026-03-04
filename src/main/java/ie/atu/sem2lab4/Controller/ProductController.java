@@ -13,15 +13,16 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
     private final ProductService productService;
+
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
     @PostMapping
-    public ResponseEntity<Product> addProduct(
-            @Valid @RequestBody Product product) {
+    public ResponseEntity<Product> addProduct(@Valid @RequestBody Product product) {
         Product saved = productService.addProduct(product);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
-return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
