@@ -10,6 +10,8 @@ import javax.xml.validation.Schema;
 @Getter
 @Setter
 public class Product {
+
+    //@Schema(accessMode = Schema.accessMode.READ_ONLY)
     private Long id;
 
     @NotBlank(message = "Product name is required")
